@@ -8,6 +8,7 @@ public class Player_Controls : MonoBehaviour
 {
 
     public float speed, distance, time;
+    bool isAttacking;
     public Rigidbody rb;
     public InputActionAsset playerControlMap;
     public GameObject projectile;
@@ -32,9 +33,9 @@ public class Player_Controls : MonoBehaviour
 
     IEnumerator Attack(float isattacking, GameObject Projectile) {
         Debug.Log("attack");
-        yield return new WaitForSeconds(time);
-        if (isattacking != 0 && Projectile.IsUnityNull()) {
+        if (isattacking != 0 && isAttacking) {
             Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + distance), Quaternion.identity);
+            yield return new WaitForSeconds(time);
         }
     }
 
@@ -47,12 +48,14 @@ public class Player_Controls : MonoBehaviour
             case true when move.ReadValue<Vector2>() != Vector2.zero:
                 Move(move.ReadValue<Vector2>());
                 break;
-            case  true when attack.ReadValue<float>() != 0:
+            case true when attack.ReadValue<float>() != 0 && !isAttacking:
+                isAttacking = true;
                 StartCoroutine(Attack(attack.ReadValue<float>(), projectile));
                 break;
             default:
                 rb.velocity = Vector3.zero;
                 StopCoroutine(Attack(attack.ReadValue<float>(), projectile));
+                isAttacking = false;
                 break;
         }
 
