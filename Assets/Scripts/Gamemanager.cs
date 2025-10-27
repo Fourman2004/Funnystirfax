@@ -84,7 +84,7 @@ public class Gamemanager : MonoBehaviour
     void Start()
     {
         jsonfilemanager = new Jsonfilemanager();
-        playerData.path = Application.persistentDataPath + "/savefile.txt";
+        playerData.path = Application.persistentDataPath + "/savefile.json";
         if (!System.IO.File.Exists(playerData.path))
         {
             playerData = new PlayerData();
