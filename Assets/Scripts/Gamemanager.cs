@@ -84,10 +84,10 @@ public class Gamemanager : MonoBehaviour
     void Start()
     {
         jsonfilemanager = new Jsonfilemanager();
+        playerData = new PlayerData();
         playerData.path = Application.persistentDataPath + "/savefile.json";
         if (!System.IO.File.Exists(playerData.path))
         {
-            playerData = new PlayerData();
             Debug.LogWarning("No save file found");
             System.IO.File.Create(playerData.path);
         }
@@ -142,6 +142,7 @@ public class Gamemanager : MonoBehaviour
                     Instantiate(Menus[2]);
                     jsonfilemanager.SaveScore(playerData);
                     doOnce[3] = true;
+                    playerScore = 0;
                 }
                 Debug.Log("Game Over");
                 break;
