@@ -1,16 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class EnemySpawn : MonoBehaviour
 {
-    [SerializeField]
     Quaternion Rotation;
 
     public Collider collison;
     public Gamemanager GM;
     public GameObject[] obstacles;
+    [SerializeField]
+    public int obstacleamount = 0;
     // Start is called before the first frame update
     void Start()
     { }
@@ -21,17 +24,21 @@ public class EnemySpawn : MonoBehaviour
     {
         if(GM.m_currentState == Gamemanager.GameState.Playing)
         {
-                spawnobstacles();
+                spawnobstacles(100);
         }
     }
 
-    public void spawnobstacles()
+    public void spawnobstacles(int cap)
     {
         int obstacletype = Random.Range(0, 2);
         Debug.Log(obstacletype);
-        GameObject Crap = obstacles[obstacletype];
-        Crap.transform.position = this.RandspawnPosition(this.gameObject.transform.position, this.gameObject.transform.localScale);
-        Instantiate(Crap, Crap.transform.position, Crap.transform.rotation);
+        if (obstacleamount != cap)
+        {
+        GameObject obstacle = obstacles[obstacletype];
+        obstacle.transform.position = this.RandspawnPosition(this.gameObject.transform.position, this.gameObject.transform.localScale);
+        Instantiate(obstacle, obstacle.transform.position, obstacle.transform.rotation);
+            obstacleamount++;
+        }
     }
     Vector3 RandspawnPosition(Vector3 start, Vector3 scale)
     {

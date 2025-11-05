@@ -9,6 +9,7 @@ public class ObstacleMove : MonoBehaviour
     public int points;
     GameObject player, gameManager;
     Gamemanager GM;
+    EnemySpawn enemySpawn;
     public bool isSpaceCraft;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,6 +18,7 @@ public class ObstacleMove : MonoBehaviour
         gameManager = GameObject.FindWithTag("GameManager");
         GM = gameManager.GetComponent<Gamemanager>();
         player = GameObject.FindWithTag("Player");
+        enemySpawn = GameObject.FindWithTag("Spawner").GetComponent<EnemySpawn>();
         rb.linearVelocity = transform.forward * movement;
     }
 
@@ -29,7 +31,7 @@ public class ObstacleMove : MonoBehaviour
             pos.x = player.transform.position.x;
             pos.y = player.transform.position.y;
             pos.z = transform.forward.z;
-            rb.linearVelocity = pos * movement;
+            rb.linearVelocity = new Vector3(pos.x,pos.y,(pos.z*movement));
         }
         else
         {
@@ -43,6 +45,7 @@ public class ObstacleMove : MonoBehaviour
         if (GM.m_currentState == Gamemanager.GameState.Playing)
         {
             GM.playerScore += points;
+            enemySpawn.obstacleamount--;
         }
     }
 }

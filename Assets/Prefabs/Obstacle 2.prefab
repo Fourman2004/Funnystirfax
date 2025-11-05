@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 6288327562692870041}
   - component: {fileID: 7212260100167791994}
   - component: {fileID: 2345064567158657971}
-  - component: {fileID: 5211162440978066036}
   - component: {fileID: 3140665513349413166}
-  - component: {fileID: 5387564942543939329}
+  - component: {fileID: 4725825347464304404}
+  - component: {fileID: 6286078559162686296}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Player
+  m_Name: Obstacle 2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 1593236072284889224}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7.93}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 37.151306, y: 36.973267, z: 200.03685}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593236072284889224}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4924047582260257756, guid: fb0e32eaee1e1524db6fd6a90740fc5c, type: 3}
 --- !u!23 &7212260100167791994
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d27610025493f92428ae9d9b69ddf705, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,24 +111,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5211162440978066036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593236072284889224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b42d02339316704c961536e294f426d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  distance: 0
-  time: 0
-  rb: {fileID: 0}
-  playerControlMap: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  projectile: {fileID: 1593236072284889224, guid: abfb0b69c44813841967130e7ebd6bbd, type: 3}
 --- !u!54 &3140665513349413166
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -156,7 +138,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5387564942543939329
+--- !u!114 &4725825347464304404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593236072284889224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b79920377027fe4ca72445bc5fb07f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: -80
+  points: 10
+  isSpaceCraft: 0
+--- !u!114 &6286078559162686296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
