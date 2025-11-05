@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1260747740616570197}
   - component: {fileID: 7541600574036943225}
   - component: {fileID: 4384065923596494696}
+  - component: {fileID: 3344103859790875429}
   m_Layer: 0
   m_Name: SpawnBox
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6785750605838718846}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -108,3 +109,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3344103859790875429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6785750605838718846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 081989221f9079349bbe3a1855278742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: 1
+  end: 0
+  Rotation: {x: 0, y: 0, z: 0, w: 0}
+  collison: {fileID: 4384065923596494696}
+  GM: {fileID: 4446996250541727371, guid: e9d2a2785a100bb44883d18401d9d54f, type: 3}
+  fish: {fileID: 1593236072284889224, guid: f229fa5e14d0b5b46a1a92d39eca6609, type: 3}

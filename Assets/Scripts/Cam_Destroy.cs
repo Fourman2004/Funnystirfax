@@ -22,12 +22,12 @@ public class Cam_Destroy : MonoBehaviour
         if (screenBounds.x < 0 || screenBounds.x > 1)
         {
             Destroy(gameObject);
-            Debug.Log("Destroyed on the X");
+            Debug.Log(gameObject + "Destroyed on the X");
         }
         else if (screenBounds.y > 1 || screenBounds.y < 0)
         {
             Destroy(gameObject);
-            Debug.Log("Destroyed on the Y");
+            Debug.Log(gameObject + "Destroyed on the Y");
         }             
     }
 }

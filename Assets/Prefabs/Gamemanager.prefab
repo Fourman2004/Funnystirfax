@@ -51,4 +51,8 @@ MonoBehaviour:
   - {fileID: 7546088546260757008, guid: 16bd88abc34ef4c49bd0645341f7bf1d, type: 3}
   - {fileID: 7546088546260757008, guid: 8c94bc9c66045bd49bb36c1f6b3123b6, type: 3}
   timer: 1
+  playerData:
+    highscore: 0
+    path: 
+    score: 0
   doOnce: 00000000

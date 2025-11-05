@@ -14,6 +14,12 @@ public class Projectile_Script : MonoBehaviour
         StartCoroutine(DestroyProjectile());
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(collision.gameObject);
+        Destroy(gameObject);
+    }
+
     // Update is called once per frame
     IEnumerator DestroyProjectile()
     {
