@@ -30,13 +30,7 @@ public class ObstacleMove : MonoBehaviour
             Vector3 pos = Vector3.zero;
             pos.x = player.transform.position.x;
             pos.y = player.transform.position.y;
-            pos.z = transform.forward.z;
-            rb.linearVelocity = new Vector3(pos.x,pos.y,(pos.z*movement));
-        }
-        else
-        {
-
-            rb.linearVelocity = transform.forward * movement;
+            rb.linearVelocity = pos * movement;
         }
     }
 
@@ -44,7 +38,6 @@ public class ObstacleMove : MonoBehaviour
     {
         if (GM.m_currentState == Gamemanager.GameState.Playing)
         {
-            GM.playerScore += points;
             enemySpawn.obstacleamount--;
         }
     }

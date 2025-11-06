@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
@@ -24,20 +25,30 @@ public class EnemySpawn : MonoBehaviour
     {
         if(GM.m_currentState == Gamemanager.GameState.Playing)
         {
-                spawnobstacles(100);
+                spawnobstacles(10);
         }
     }
 
     public void spawnobstacles(int cap)
     {
-        int obstacletype = Random.Range(0, 2);
+        int obstacletype = Random.Range(0, obstacles.Length);
+        bool doOnce = false;
         Debug.Log(obstacletype);
         if (obstacleamount != cap)
         {
-        GameObject obstacle = obstacles[obstacletype];
-        obstacle.transform.position = this.RandspawnPosition(this.gameObject.transform.position, this.gameObject.transform.localScale);
-        Instantiate(obstacle, obstacle.transform.position, obstacle.transform.rotation);
-            obstacleamount++;
+            GameObject obstacle = obstacles[obstacletype];
+            if (!obstacle.CompareTag("Asteroid") && !doOnce)
+            {
+                doOnce = true;
+                obstacleamount++;
+            }
+            else
+            {
+                obstacleamount++;
+            }
+            obstacle.transform.position = this.RandspawnPosition(this.gameObject.transform.position, this.gameObject.transform.localScale);
+            Instantiate(obstacle, obstacle.transform.position, obstacle.transform.rotation);
+        
         }
     }
     Vector3 RandspawnPosition(Vector3 start, Vector3 scale)
