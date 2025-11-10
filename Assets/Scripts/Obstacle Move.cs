@@ -25,11 +25,12 @@ public class ObstacleMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Rigidbody player_rb = player.GetComponent<Rigidbody>();
         if (isSpaceCraft)
-        {
+        { 
             Vector3 pos = Vector3.zero;
-            pos.x = player.transform.position.x;
-            pos.y = player.transform.position.y;
+            pos.x = player_rb.linearVelocity.x;
+            pos.y = player_rb.linearVelocity.y;
             rb.linearVelocity = pos * movement;
         }
     }
