@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,7 +13,8 @@ public class Player_Controls : MonoBehaviour
     public Rigidbody rb;
     public InputActionAsset playerControlMap;
     public GameObject projectile;
-    InputAction move, attack;
+    [NonSerialized]
+    public InputAction move, attack;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,8 +36,8 @@ public class Player_Controls : MonoBehaviour
     IEnumerator Attack(float isattacking, GameObject Projectile) {
         Debug.Log("attack");
         if (isattacking != 0 && isAttacking) {
-            Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + distance), Quaternion.identity);
             yield return new WaitForSeconds(time);
+            Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + distance), Quaternion.identity);
         }
     }
 

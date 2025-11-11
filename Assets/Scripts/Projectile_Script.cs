@@ -5,7 +5,8 @@ public class Projectile_Script : MonoBehaviour
 {
 
     public Rigidbody rb;
-    public float projectileSpeed, damage, delay;
+    public float projectileSpeed, delay;
+    public string IgnoreTag;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,7 +17,7 @@ public class Projectile_Script : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("Player"))
+        if (!collision.gameObject.CompareTag(IgnoreTag))
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
