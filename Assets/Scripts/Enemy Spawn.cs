@@ -14,7 +14,7 @@ public class EnemySpawn : MonoBehaviour
     public Gamemanager GM;
     public GameObject[] obstacles;
     [SerializeField]
-    public int obstacleamount = 0;
+    public int obstacleamount = 0, shipamount = 0;
     // Start is called before the first frame update
     void Start()
     { }
@@ -25,31 +25,22 @@ public class EnemySpawn : MonoBehaviour
     {
         if(GM.m_currentState == Gamemanager.GameState.Playing)
         {
-                spawnobstacles(10);
+                spawnobstacles(100, 5);
         }
     }
 
-    public void spawnobstacles(int cap)
+    public void spawnobstacles(int Astroidcap, int Shipcap)
     {
         int obstacletype = Random.Range(0, obstacles.Length);
-        bool doOnce = false;
+        GameObject obstacle = obstacles[obstacletype];
         Debug.Log(obstacletype);
-        if (obstacleamount != cap)
+        if (obstacleamount != Astroidcap && obstacle.CompareTag(""))
         {
-            GameObject obstacle = obstacles[obstacletype];
-            if (!obstacle.CompareTag("Asteroid") && !doOnce)
-            {
-                doOnce = true;
-                obstacleamount++;
-            }
-            else
-            {
-                obstacleamount++;
-            }
             obstacle.transform.position = this.RandspawnPosition(this.gameObject.transform.position, this.gameObject.transform.localScale);
             Instantiate(obstacle, obstacle.transform.position, obstacle.transform.rotation);
-        
+            obstacleamount++;
         }
+
     }
     Vector3 RandspawnPosition(Vector3 start, Vector3 scale)
     {

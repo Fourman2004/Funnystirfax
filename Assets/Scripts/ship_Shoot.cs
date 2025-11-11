@@ -22,7 +22,7 @@ public class ship_Shoot : MonoBehaviour
             Instantiate(projectile, new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + -10), Quaternion.identity);
             doonce = true;
         }
-        else
+        else if (Player_Controls.attack.ReadValue<float>() == 0)
         {
             doonce = false;
         }
