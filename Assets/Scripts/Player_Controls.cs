@@ -47,7 +47,7 @@ public class Player_Controls : MonoBehaviour
     public void FixedUpdate()
     {
 
-        switch (!playerControlMap.IsUnityNull())
+        switch (!playerControlMap.IsUnityNull() && playerControlMap.enabled)
         {
             case true when move.ReadValue<Vector2>() != Vector2.zero:
                 Move(move.ReadValue<Vector2>());

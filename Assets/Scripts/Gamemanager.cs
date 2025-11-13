@@ -67,6 +67,7 @@ public class Gamemanager : MonoBehaviour
     public GameState m_currentState;
     public int playerScore;
     public GameObject[] Menus;
+    Player_Controls player;
     public Jsonfilemanager jsonfilemanager;
     public float timer = 0.2f;
     public PlayerData playerData;
@@ -85,6 +86,7 @@ public class Gamemanager : MonoBehaviour
     {
         jsonfilemanager = new Jsonfilemanager();
         playerData = new PlayerData();
+        player = GameObject.FindWithTag("Player").GetComponent<Player_Controls>();
         playerData.path = Application.persistentDataPath + "/savefile.json";
         if (!System.IO.File.Exists(playerData.path))
         {
@@ -107,6 +109,7 @@ public class Gamemanager : MonoBehaviour
                 if (!doOnce[0])
                 {
                     Instantiate(Menus[0]);
+                    player.enabled = false;
                     doOnce[0] = true;
                 }
                 Debug.Log("Main Menu");
@@ -119,6 +122,7 @@ public class Gamemanager : MonoBehaviour
                     doOnce[1] = true;
                     StartCoroutine(Scoring());
                     clearMenus();
+                    player.enabled = true;
                 }
                 Debug.Log("Playing");
                 break;
@@ -127,6 +131,7 @@ public class Gamemanager : MonoBehaviour
                 if (doOnce[2])
                 {
                     StopAllCoroutines();
+                    player.enabled = false;
                     Time.timeScale = 0f;
                     doOnce[2] = false;
                 }
