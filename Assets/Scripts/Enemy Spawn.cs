@@ -25,7 +25,7 @@ public class EnemySpawn : MonoBehaviour
     {
         if(GM.m_currentState == Gamemanager.GameState.Playing)
         {
-                spawnobstacles(100, 5);
+                spawnobstacles(50, 5);
         }
     }
 
