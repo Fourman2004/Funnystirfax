@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 public class ObstacleMove : MonoBehaviour
 {
 
-    Rigidbody rb;
+    Rigidbody rb, player_rb;
     public float movement;
     public int points;
     GameObject player, gameManager;
@@ -18,6 +18,7 @@ public class ObstacleMove : MonoBehaviour
         gameManager = GameObject.FindWithTag("GameManager");
         GM = gameManager.GetComponent<Gamemanager>();
         player = GameObject.FindWithTag("Player");
+        player_rb = player.GetComponent<Rigidbody>();
         enemySpawn = GameObject.FindWithTag("Spawner").GetComponent<EnemySpawn>();
         rb.linearVelocity = transform.forward * movement;
     }
@@ -25,9 +26,8 @@ public class ObstacleMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Rigidbody player_rb = player.GetComponent<Rigidbody>();
         if (isSpaceCraft)
-        { 
+        {
             Vector3 pos = Vector3.zero;
             pos.x = player_rb.linearVelocity.x;
             pos.y = player_rb.linearVelocity.y;
@@ -39,7 +39,15 @@ public class ObstacleMove : MonoBehaviour
     {
         if (GM.m_currentState == Gamemanager.GameState.Playing)
         {
-            enemySpawn.obstacleamount--;
+            if (gameObject.CompareTag("Asteroid"))
+            {
+                enemySpawn.obstacleamount--;
+
+            }
+            else
+            {
+                enemySpawn.shipamount--;
+            }
         }
     }
 }

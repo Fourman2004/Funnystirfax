@@ -27,15 +27,17 @@ public class Player_Controls : MonoBehaviour
 
     // Update is called once per frame
     public void Move(Vector2 direction)
-    { 
+    {
         Vector3 direction3 = new Vector3(direction.x, direction.y, 0);
         Debug.Log("move");
         rb.AddForce(direction3 * speed);
     }
 
-     void Attack(float isattacking, GameObject Projectile) {
+    void Attack(float isattacking, GameObject Projectile)
+    {
         Debug.Log("attack");
-        if (isattacking != 0 && !doOnce) {
+        if (isattacking != 0 && !doOnce)
+        {
             Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + distance), Quaternion.identity);
             doOnce = true;
         }
@@ -60,5 +62,11 @@ public class Player_Controls : MonoBehaviour
         }
 
 
+    }
+
+    public void OnDestroy()
+    {
+        Gamemanager Gamestate = GameObject.FindWithTag("GameManager").GetComponent<Gamemanager>();
+        Gamestate.m_currentState = Gamemanager.GameState.GameOver;
     }
 }

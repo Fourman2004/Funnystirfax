@@ -13,7 +13,7 @@ public class EnemySpawn : MonoBehaviour
     public Collider collison;
     public Gamemanager GM;
     public GameObject[] obstacles;
-    [SerializeField]
+    [NonSerialized]
     public int obstacleamount = 0, shipamount = 0;
     // Start is called before the first frame update
     void Start()
@@ -34,13 +34,18 @@ public class EnemySpawn : MonoBehaviour
         int obstacletype = Random.Range(0, obstacles.Length);
         GameObject obstacle = obstacles[obstacletype];
         Debug.Log(obstacletype);
-        if (obstacleamount != Astroidcap && obstacle.CompareTag(""))
+        if (obstacleamount != Astroidcap && obstacle.CompareTag("Asteroid"))
         {
             obstacle.transform.position = this.RandspawnPosition(this.gameObject.transform.position, this.gameObject.transform.localScale);
             Instantiate(obstacle, obstacle.transform.position, obstacle.transform.rotation);
             obstacleamount++;
         }
-
+        else if (shipamount != Shipcap && obstacle.CompareTag("Enemy"))
+        {
+            obstacle.transform.position = this.RandspawnPosition(this.gameObject.transform.position, this.gameObject.transform.localScale);
+            Instantiate(obstacle, obstacle.transform.position, obstacle.transform.rotation);
+            shipamount++;
+        }
     }
     Vector3 RandspawnPosition(Vector3 start, Vector3 scale)
     {
