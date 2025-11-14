@@ -150,6 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  projectileSpeed: -5000
-  delay: 3
+  projectileSpeed: -50000
+  delay: 1
   IgnoreTag: Enemy

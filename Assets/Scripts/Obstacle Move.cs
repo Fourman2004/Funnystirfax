@@ -14,19 +14,22 @@ public class ObstacleMove : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         gameManager = GameObject.FindWithTag("GameManager");
         GM = gameManager.GetComponent<Gamemanager>();
-        player = GameObject.FindWithTag("Player");
-        player_rb = player.GetComponent<Rigidbody>();
-        enemySpawn = GameObject.FindWithTag("Spawner").GetComponent<EnemySpawn>();
-        rb.linearVelocity = transform.forward * movement;
+        rb = GetComponent<Rigidbody>();
+        if (GM.m_currentState != Gamemanager.GameState.GameOver)
+        {
+            player = GameObject.FindWithTag("Player");
+            player_rb = player.GetComponent<Rigidbody>();
+            enemySpawn = GameObject.FindWithTag("Spawner").GetComponent<EnemySpawn>();
+            rb.linearVelocity = transform.forward * movement;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isSpaceCraft)
+        if (isSpaceCraft && GM.m_currentState != Gamemanager.GameState.GameOver)
         {
             Vector3 pos = Vector3.zero;
             pos.x = player_rb.linearVelocity.x;

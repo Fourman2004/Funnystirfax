@@ -42,7 +42,7 @@ public class EnemySpawn : MonoBehaviour
         }
         else if (shipamount != Shipcap && obstacle.CompareTag("Enemy"))
         {
-            obstacle.transform.position = this.RandspawnPosition(this.gameObject.transform.position, this.gameObject.transform.localScale);
+            obstacle.transform.position = this.RandspawnPosition(this.gameObject.transform.position/2, this.gameObject.transform.localScale/2);
             Instantiate(obstacle, obstacle.transform.position, obstacle.transform.rotation);
             shipamount++;
         }

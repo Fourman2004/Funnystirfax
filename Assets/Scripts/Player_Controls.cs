@@ -68,5 +68,6 @@ public class Player_Controls : MonoBehaviour
     {
         Gamemanager Gamestate = GameObject.FindWithTag("GameManager").GetComponent<Gamemanager>();
         Gamestate.m_currentState = Gamemanager.GameState.GameOver;
+        this.enabled = false;
     }
 }
