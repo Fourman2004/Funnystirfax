@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 [Serializable]
 public class PlayerData
@@ -70,6 +71,7 @@ public class Gamemanager : MonoBehaviour
     Player_Controls player;
     public Jsonfilemanager jsonfilemanager;
     public float timer = 0.2f;
+    public Text scoreText, highscoreText;
     public PlayerData playerData;
     public bool[] doOnce;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -84,6 +86,8 @@ public class Gamemanager : MonoBehaviour
 
     void Start()
     {
+        scoreText.text = "Score: " + playerScore;
+        highscoreText.text = "Highscore: " + playerData.highscore;
         jsonfilemanager = new Jsonfilemanager();
         playerData = new PlayerData();
         player = GameObject.FindWithTag("Player").GetComponent<Player_Controls>();

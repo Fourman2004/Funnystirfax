@@ -6,18 +6,40 @@ public class Menu_Inputs : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public TextMeshProUGUI scoreText, highScoreText;
+    Gamemanager GameManager;
 
     void Start()
     {
-        Gamemanager GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Gamemanager>();
+        GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Gamemanager>();
         PlayerData data = GameManager.playerData;
         scoreText.text = "Score: " + data.score;
         highScoreText.text = "Highscore: " + data.highscore;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void Mainmenu()
     {
-        
+        GameManager.m_currentState = Gamemanager.GameState.MainMenu;
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+        if (Player == null)
+        {
+            Instantiate(Player, Vector3.zero, Quaternion.identity);
+        }
     }
+
+    public void PlayGame()
+    {
+        GameManager.m_currentState = Gamemanager.GameState.Playing;
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+        if (Player == null)
+        {
+            Instantiate(Player, Vector3.zero, Quaternion.identity);
+        }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
 }
