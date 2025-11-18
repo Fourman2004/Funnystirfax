@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -71,7 +72,7 @@ public class Gamemanager : MonoBehaviour
     Player_Controls player;
     public Jsonfilemanager jsonfilemanager;
     public float timer = 0.2f;
-    public Text scoreText, highscoreText;
+    public TextMeshProUGUI scoreText, highscoreText;
     public PlayerData playerData;
     public bool[] doOnce;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -86,8 +87,6 @@ public class Gamemanager : MonoBehaviour
 
     void Start()
     {
-        scoreText.text = "Score: " + playerScore;
-        highscoreText.text = "Highscore: " + playerData.highscore;
         jsonfilemanager = new Jsonfilemanager();
         playerData = new PlayerData();
         player = GameObject.FindWithTag("Player").GetComponent<Player_Controls>();
@@ -100,6 +99,7 @@ public class Gamemanager : MonoBehaviour
         else
         {
             jsonfilemanager.LoadScore(playerData);
+            highscoreText.text = "Highscore: " + playerData.highscore;
         }
 
     }
@@ -165,6 +165,7 @@ public class Gamemanager : MonoBehaviour
         {
             yield return new WaitForSeconds(timer);
             playerScore++;
+            scoreText.text = "Score: " + playerScore;
             Debug.Log("Score: " + playerScore);
         }
     }

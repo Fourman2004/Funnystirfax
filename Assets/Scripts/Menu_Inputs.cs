@@ -12,8 +12,6 @@ public class Menu_Inputs : MonoBehaviour
     {
         GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Gamemanager>();
         PlayerData data = GameManager.playerData;
-        scoreText.text = "Score: " + data.score;
-        highScoreText.text = "Highscore: " + data.highscore;
     }
 
 
