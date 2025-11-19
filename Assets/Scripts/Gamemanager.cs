@@ -125,19 +125,19 @@ public class Gamemanager : MonoBehaviour
                     Time.timeScale = 1f;
                     doOnce[1] = true;
                     StartCoroutine(Scoring());
-                    clearMenus();
                     player.enabled = true;
                 }
                 Debug.Log("Playing");
                 break;
             case GameState.Paused:
                 // Handle paused logic
-                if (doOnce[2])
+                if (!doOnce[2])
                 {
                     StopAllCoroutines();
                     player.enabled = false;
                     Time.timeScale = 0f;
-                    doOnce[2] = false;
+                    doOnce[2] = true;
+                    Instantiate(Menus[1]);
                 }
                 Debug.Log("Paused");
 
@@ -170,15 +170,5 @@ public class Gamemanager : MonoBehaviour
         }
     }
     // Update is called once per frame
-
-
-    void clearMenus()
-    {
-        for (int i = 0; i < Menus.Length; i++)
-        {
-            Destroy(GameObject.FindWithTag("Menu"));
-
-        }
-    }
 }
 

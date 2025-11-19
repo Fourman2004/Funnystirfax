@@ -14,7 +14,7 @@ public class Player_Controls : MonoBehaviour
     public InputActionAsset playerControlMap;
     public GameObject projectile;
     [NonSerialized]
-    public InputAction move, attack;
+    public InputAction move, attack, pause;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +23,7 @@ public class Player_Controls : MonoBehaviour
         playerControlMap.Enable();
         move = playerControlMap.FindActionMap("Player").FindAction("Move");
         attack = playerControlMap.FindActionMap("Player").FindAction("Attack");
+        pause = playerControlMap.FindActionMap("Player").FindAction("Pause");
     }
 
     // Update is called once per frame
@@ -54,6 +55,10 @@ public class Player_Controls : MonoBehaviour
                 break;
             case true when attack.ReadValue<float>() != 0:
                 Attack(attack.ReadValue<float>(), projectile);
+                break;
+            case true when pause.ReadValue<float>() != 0:
+                Gamemanager Gamestate = GameObject.FindWithTag("GameManager").GetComponent<Gamemanager>();
+                Gamestate.m_currentState = Gamemanager.GameState.Paused;
                 break;
             default:
                 rb.linearVelocity = Vector3.zero;

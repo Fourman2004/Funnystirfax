@@ -6,10 +6,12 @@ public class Menu_Inputs : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public TextMeshProUGUI scoreText, highScoreText;
-    Gamemanager GameManager;
+    public Gamemanager GameManager;
+    GameObject Player;
 
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
         GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Gamemanager>();
         PlayerData data = GameManager.playerData;
     }
@@ -18,21 +20,22 @@ public class Menu_Inputs : MonoBehaviour
     public void Mainmenu()
     {
         GameManager.m_currentState = Gamemanager.GameState.MainMenu;
-        GameObject Player = GameObject.FindGameObjectWithTag("Player");
-        if (Player == null)
-        {
-            Instantiate(Player, Vector3.zero, Quaternion.identity);
-        }
+        Instantiate(Player, Vector3.zero, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
+    public void ResumeGame()
+    {
+        GameManager.m_currentState = Gamemanager.GameState.Playing;
+        Time.timeScale = 1f;
+        Destroy(gameObject);
     }
 
     public void PlayGame()
     {
         GameManager.m_currentState = Gamemanager.GameState.Playing;
-        GameObject Player = GameObject.FindGameObjectWithTag("Player");
-        if (Player == null)
-        {
-            Instantiate(Player, Vector3.zero, Quaternion.identity);
-        }
+        Instantiate(Player, Vector3.zero, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     public void QuitGame()
