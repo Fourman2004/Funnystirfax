@@ -115,6 +115,7 @@ public class Gamemanager : MonoBehaviour
                     Instantiate(Menus[0]);
                     player.enabled = false;
                     doOnce[0] = true;
+                    ResetDoOnce(0);
                 }
                 Debug.Log("Main Menu");
                 break;
@@ -126,6 +127,7 @@ public class Gamemanager : MonoBehaviour
                     doOnce[1] = true;
                     StartCoroutine(Scoring());
                     player.enabled = true;
+                    ResetDoOnce(1);
                 }
                 Debug.Log("Playing");
                 break;
@@ -138,9 +140,9 @@ public class Gamemanager : MonoBehaviour
                     Time.timeScale = 0f;
                     doOnce[2] = true;
                     Instantiate(Menus[1]);
+                    ResetDoOnce(2);
                 }
                 Debug.Log("Paused");
-
                 break;
             case GameState.GameOver:
                 // Handle game over logic
@@ -152,6 +154,7 @@ public class Gamemanager : MonoBehaviour
                     jsonfilemanager.SaveScore(playerData);
                     doOnce[3] = true;
                     playerScore = 0;
+                    ResetDoOnce(3);
                 }
                 Debug.Log("Game Over");
                 break;
@@ -170,5 +173,16 @@ public class Gamemanager : MonoBehaviour
         }
     }
     // Update is called once per frame
+
+    private void ResetDoOnce(int Exclude)
+    {
+        for (int i = 0; i < doOnce.Length; i++)
+        {
+            if (i != Exclude)
+            {
+            doOnce[i] = false;
+            }
+        }
+    }
 }
 

@@ -38,9 +38,18 @@ public class ObstacleMove : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void OnCollisionEnter(Collision collision)
     {
         if (GM.m_currentState == Gamemanager.GameState.Playing)
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (GM.m_currentState == Gamemanager.GameState.Playing || GM.m_currentState == Gamemanager.GameState.MainMenu)
         {
             if (gameObject.CompareTag("Asteroid"))
             {

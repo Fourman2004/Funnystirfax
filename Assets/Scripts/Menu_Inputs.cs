@@ -1,5 +1,7 @@
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu_Inputs : MonoBehaviour
@@ -7,7 +9,7 @@ public class Menu_Inputs : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public TextMeshProUGUI scoreText, highScoreText;
     public Gamemanager GameManager;
-    GameObject Player;
+    public GameObject Player;
 
     void Start()
     {
@@ -19,9 +21,7 @@ public class Menu_Inputs : MonoBehaviour
 
     public void Mainmenu()
     {
-        GameManager.m_currentState = Gamemanager.GameState.MainMenu;
-        Instantiate(Player, Vector3.zero, Quaternion.identity);
-        Destroy(gameObject);
+      SceneManager.LoadScene("MainMenu");
     }
 
     public void ResumeGame()
@@ -33,9 +33,7 @@ public class Menu_Inputs : MonoBehaviour
 
     public void PlayGame()
     {
-        GameManager.m_currentState = Gamemanager.GameState.Playing;
-        Instantiate(Player, Vector3.zero, Quaternion.identity);
-        Destroy(gameObject);
+        SceneManager.LoadScene("MainGame");
     }
 
     public void QuitGame()

@@ -13,6 +13,7 @@ public class Player_Controls : MonoBehaviour
     public Rigidbody rb;
     public InputActionAsset playerControlMap;
     public GameObject projectile;
+    Gamemanager Gamestate;
     [NonSerialized]
     public InputAction move, attack, pause;
 
@@ -20,6 +21,7 @@ public class Player_Controls : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Gamestate = GameObject.FindWithTag("GameManager").GetComponent<Gamemanager>();
         playerControlMap.Enable();
         move = playerControlMap.FindActionMap("Player").FindAction("Move");
         attack = playerControlMap.FindActionMap("Player").FindAction("Attack");
@@ -39,7 +41,7 @@ public class Player_Controls : MonoBehaviour
         Debug.Log("attack");
         if (isattacking != 0 && !doOnce)
         {
-            Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + distance), Quaternion.identity);
+            Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + distance), new Quaternion(90, 0, 0, 100));
             doOnce = true;
         }
     }
@@ -71,7 +73,6 @@ public class Player_Controls : MonoBehaviour
 
     public void OnDestroy()
     {
-        Gamemanager Gamestate = GameObject.FindWithTag("GameManager").GetComponent<Gamemanager>();
         Gamestate.m_currentState = Gamemanager.GameState.GameOver;
         this.enabled = false;
     }

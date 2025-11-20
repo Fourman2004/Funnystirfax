@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1593236072284889224}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -74.739716, y: 45.0549, z: 199.15906}
+  m_LocalPosition: {x: 49.414654, y: -12.53199, z: 199.81705}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b79920377027fe4ca72445bc5fb07f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: -70
+  movement: -700
   points: 10
   isSpaceCraft: 0
 --- !u!114 &6286078559162686296

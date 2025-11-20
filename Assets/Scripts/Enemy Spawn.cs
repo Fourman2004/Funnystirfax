@@ -15,6 +15,7 @@ public class EnemySpawn : MonoBehaviour
     public GameObject[] obstacles;
     [NonSerialized]
     public int obstacleamount = 0, shipamount = 0;
+    public int ShipMax, AstroidMax;
     // Start is called before the first frame update
     void Start()
     { }
@@ -23,9 +24,9 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GM.m_currentState == Gamemanager.GameState.Playing)
+        if(GM.m_currentState == Gamemanager.GameState.Playing || GM.m_currentState == Gamemanager.GameState.MainMenu)
         {
-                spawnobstacles(50, 5);
+         spawnobstacles(AstroidMax, ShipMax);
         }
     }
 

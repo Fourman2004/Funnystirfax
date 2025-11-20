@@ -11,7 +11,7 @@ public class Projectile_Script : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * projectileSpeed);
+        rb.AddForce(new Vector3(0,0,transform.forward.z) * projectileSpeed);
         StartCoroutine(DestroyProjectile());
     }
 

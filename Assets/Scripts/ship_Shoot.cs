@@ -19,7 +19,7 @@ public class ship_Shoot : MonoBehaviour
     {
         if (Player_Controls.attack.ReadValue<float>() == 1 && !doonce)
         {
-            Instantiate(projectile, new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + -10), Quaternion.identity);
+            Instantiate(projectile, new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + -10), new Quaternion(90, 0, 0, 100));
             doonce = true;
         }
         else if (Player_Controls.attack.ReadValue<float>() == 0)
