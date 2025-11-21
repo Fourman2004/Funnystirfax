@@ -26,7 +26,7 @@ public class EnemySpawn : MonoBehaviour
     {
         if(GM.m_currentState == Gamemanager.GameState.Playing || GM.m_currentState == Gamemanager.GameState.MainMenu)
         {
-         spawnobstacles(AstroidMax, ShipMax);
+         spawnobstacles((AstroidMax*(GM.playerScore / 10)), (ShipMax * (GM.playerScore / 10)));
         }
     }
 

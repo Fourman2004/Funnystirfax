@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1593236072284889224}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.0279, y: 11.061778, z: 99.66167}
+  m_LocalPosition: {x: -162.31055, y: 47.12465, z: 99.792496}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7012e0a1272954faab124be49502df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootTimer: 1
   projectile: {fileID: 1593236072284889224, guid: 3b16cf31c13b8aa40bcdb3052c0273b6, type: 3}
 --- !u!1001 &9090041513307352019
 PrefabInstance:

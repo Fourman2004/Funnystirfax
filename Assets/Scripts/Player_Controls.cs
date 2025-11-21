@@ -33,7 +33,7 @@ public class Player_Controls : MonoBehaviour
     {
         Vector3 direction3 = new Vector3(direction.x, direction.y, 0);
         Debug.Log("move");
-        rb.AddForce(direction3 * speed);
+        rb.AddForce(direction3 * (speed * (Gamestate.playerScore / 10)));
     }
 
     void Attack(float isattacking, GameObject Projectile)

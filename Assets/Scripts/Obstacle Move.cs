@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -22,7 +23,8 @@ public class ObstacleMove : MonoBehaviour
             player = GameObject.FindWithTag("Player");
             player_rb = player.GetComponent<Rigidbody>();
             enemySpawn = GameObject.FindWithTag("Spawner").GetComponent<EnemySpawn>();
-            rb.linearVelocity = transform.forward * movement;
+            rb.linearVelocity = transform.forward * (movement * (GM.playerScore / 2));
+            StartCoroutine(Takentoolong(10));
         }
     }
 
@@ -31,10 +33,11 @@ public class ObstacleMove : MonoBehaviour
     {
         if (isSpaceCraft && GM.m_currentState != Gamemanager.GameState.GameOver)
         {
+            StopCoroutine(Takentoolong(10));
             Vector3 pos = Vector3.zero;
             pos.x = player_rb.linearVelocity.x;
             pos.y = player_rb.linearVelocity.y;
-            rb.linearVelocity = pos * movement;
+            rb.linearVelocity = pos * (movement * (GM.playerScore / 10));
         }
     }
 
@@ -61,5 +64,11 @@ public class ObstacleMove : MonoBehaviour
                 enemySpawn.shipamount--;
             }
         }
+    }
+
+    IEnumerator Takentoolong(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject);
     }
 }

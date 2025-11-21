@@ -9,13 +9,13 @@ public class Menu_Inputs : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public TextMeshProUGUI scoreText, highScoreText;
     public Gamemanager GameManager;
-    public GameObject Player;
 
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
         GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Gamemanager>();
         PlayerData data = GameManager.playerData;
+        scoreText.text = "Score: " + data.score.ToString();
+        highScoreText.text = "High Score: " + data.highscore.ToString();
     }
 
 
