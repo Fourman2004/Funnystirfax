@@ -90,6 +90,7 @@ public class Gamemanager : MonoBehaviour
         jsonfilemanager = new Jsonfilemanager();
         playerData = new PlayerData();
         player = GameObject.FindWithTag("Player").GetComponent<Player_Controls>();
+        scoreText.text = "Score: " + playerScore;
         playerData.path = Application.persistentDataPath + "/savefile.json";
         if (!System.IO.File.Exists(playerData.path))
         {
