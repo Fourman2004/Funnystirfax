@@ -499,6 +499,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7557984515690187850, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
+      propertyPath: backgroundMusicSource
+      value: 
+      objectReference: {fileID: 1423079506}
+    - target: {fileID: -2072212315289423486, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2072212315289423486, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: af2cc76ff76eafe4b8c72669d2e2e48b, type: 3}
     - target: {fileID: 5750774630010031831, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.00921
@@ -608,6 +620,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143a7d8e89e74f048bc4bd61c8b69b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1423079506 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: -2072212315289423486, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
+  m_PrefabInstance: {fileID: 730026717}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1461542086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6303878171302472008, guid: e6c797a12c51a4d4c8e01d381019ea1e, type: 3}
