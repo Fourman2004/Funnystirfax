@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -37,7 +38,7 @@ public class ObstacleMove : MonoBehaviour
             Vector3 pos = Vector3.zero;
             pos.x = player_rb.linearVelocity.x;
             pos.y = player_rb.linearVelocity.y;
-            rb.linearVelocity = pos * (movement * (GM.playerScore / 10));
+            rb.linearVelocity = pos * (movement * MathF.Truncate(GM.playerScore/10 * 0.75f));
         }
     }
 

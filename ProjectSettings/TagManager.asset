@@ -9,6 +9,7 @@ TagManager:
   - Spawner
   - Asteroid
   - Enemy
+  - AudioManager
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,8 @@ public class EnemySpawn : MonoBehaviour
     public Collider collison;
     public Gamemanager GM;
     public GameObject[] obstacles;
+    [SerializeField]
+    GameObject Blinkin;
     [NonSerialized]
     public int obstacleamount = 0, shipamount = 0;
     public int ShipMax, AstroidMax;
@@ -26,11 +28,11 @@ public class EnemySpawn : MonoBehaviour
     {
         if(GM.m_currentState == Gamemanager.GameState.Playing || GM.m_currentState == Gamemanager.GameState.MainMenu)
         {
-         spawnobstacles((AstroidMax*(GM.playerScore / 10)), (ShipMax * (GM.playerScore / 10)));
+         spawnobstacles(Math.Truncate((AstroidMax*(GM.playerScore * 0.75))), Math.Truncate((ShipMax * (GM.playerScore * 0.75f))));
         }
     }
 
-    public void spawnobstacles(int Astroidcap, int Shipcap)
+    public void spawnobstacles(double Astroidcap, double Shipcap)
     {
         int obstacletype = Random.Range(0, obstacles.Length);
         GameObject obstacle = obstacles[obstacletype];
@@ -43,11 +45,20 @@ public class EnemySpawn : MonoBehaviour
         }
         else if (shipamount != Shipcap && obstacle.CompareTag("Enemy"))
         {
-            obstacle.transform.position = this.RandspawnPosition(this.gameObject.transform.position/2, this.gameObject.transform.localScale/2);
+            obstacle.transform.position = this.RandspawnPosition(this.gameObject.transform.position / 2, this.gameObject.transform.localScale / 2);
+            GameObject Portal = Instantiate(Blinkin, obstacle.transform.position, obstacle.transform.rotation);
+            StartCoroutine(Closeportal(Portal));
             Instantiate(obstacle, obstacle.transform.position, obstacle.transform.rotation);
             shipamount++;
         }
     }
+
+    IEnumerator Closeportal(GameObject VFX)
+    {
+        yield return new WaitForSeconds(1.5f);
+        Destroy(VFX);
+    }
+
     Vector3 RandspawnPosition(Vector3 start, Vector3 scale)
     {
         return new(Random.Range(start.x - scale.x, start.x + scale.x), 

@@ -14,6 +14,7 @@ public class Player_Controls : MonoBehaviour
     public InputActionAsset playerControlMap;
     public GameObject projectile;
     Gamemanager Gamestate;
+    AudioManager audioManager;
     [NonSerialized]
     public InputAction move, attack, pause;
 
@@ -22,6 +23,7 @@ public class Player_Controls : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Gamestate = GameObject.FindWithTag("GameManager").GetComponent<Gamemanager>();
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         playerControlMap.Enable();
         move = playerControlMap.FindActionMap("Player").FindAction("Move");
         attack = playerControlMap.FindActionMap("Player").FindAction("Attack");
@@ -33,7 +35,7 @@ public class Player_Controls : MonoBehaviour
     {
         Vector3 direction3 = new Vector3(direction.x, direction.y, 0);
         Debug.Log("move");
-        rb.AddForce(direction3 * (speed * (Gamestate.playerScore / 10)));
+        rb.AddForce(direction3 * (speed * (Gamestate.playerScore * 0.75f)));
     }
 
     void Attack(float isattacking, GameObject Projectile)
@@ -43,6 +45,7 @@ public class Player_Controls : MonoBehaviour
         {
             Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + distance), new Quaternion(90, 0, 0, 100));
             doOnce = true;
+            audioManager.PlaySFX(1);
         }
     }
 
@@ -75,5 +78,6 @@ public class Player_Controls : MonoBehaviour
     {
         Gamestate.m_currentState = Gamemanager.GameState.GameOver;
         this.enabled = false;
+        audioManager.PlaySFX(2);
     }
 }

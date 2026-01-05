@@ -687,6 +687,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1180872351}
     - target: {fileID: 3344103859790875429, guid: e95ed7ccc4b29304eb4b07692b77d98b, type: 3}
+      propertyPath: Blinkin
+      value: 
+      objectReference: {fileID: 6465249256851274223, guid: d5774d459f0f43d4591f34994be1404e, type: 3}
+    - target: {fileID: 3344103859790875429, guid: e95ed7ccc4b29304eb4b07692b77d98b, type: 3}
+      propertyPath: ShipMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3344103859790875429, guid: e95ed7ccc4b29304eb4b07692b77d98b, type: 3}
       propertyPath: AstroidMax
       value: 100
       objectReference: {fileID: 0}
