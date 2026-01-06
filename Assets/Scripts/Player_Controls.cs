@@ -12,7 +12,7 @@ public class Player_Controls : MonoBehaviour
     bool doOnce;
     public Rigidbody rb;
     public InputActionAsset playerControlMap;
-    public GameObject projectile;
+    public GameObject projectile, explosionSFX;
     Gamemanager Gamestate;
     AudioManager audioManager;
     [NonSerialized]
@@ -76,8 +76,16 @@ public class Player_Controls : MonoBehaviour
 
     public void OnDestroy()
     {
+        GameObject Explosion = Instantiate(explosionSFX, this.transform.position, this.transform.rotation);
+        StartCoroutine(Takentoolong(Explosion, 2));
         Gamestate.m_currentState = Gamemanager.GameState.GameOver;
         this.enabled = false;
         audioManager.PlaySFX(2);
+    }
+
+    IEnumerator Takentoolong(GameObject Explosion, float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(Explosion);
     }
 }

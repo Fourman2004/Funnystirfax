@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: -1
   points: 20
+  explosionSFX: {fileID: 8464950693656172981, guid: 83ad694f134ab954580473212156b35a, type: 3}
   isSpaceCraft: 1
 --- !u!114 &7359000784184182702
 MonoBehaviour:

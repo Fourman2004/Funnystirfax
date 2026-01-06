@@ -10,6 +10,7 @@ public class ObstacleMove : MonoBehaviour
     public float movement;
     public int points;
     GameObject player, gameManager;
+    public GameObject explosionSFX;
     Gamemanager GM;
     AudioManager audioManager;
     EnemySpawn enemySpawn;
@@ -64,10 +65,18 @@ public class ObstacleMove : MonoBehaviour
             }
             else
             {
+                GameObject Explosion = Instantiate(explosionSFX, this.transform.position, this.transform.rotation);
+                StartCoroutine(Takentoolong(Explosion, 2));
                 audioManager.PlaySFX(1);
                 enemySpawn.shipamount--;
             }
         }
+    }
+
+    IEnumerator Takentoolong(GameObject Explosion, float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(Explosion);
     }
 
     IEnumerator Takentoolong(float time)
