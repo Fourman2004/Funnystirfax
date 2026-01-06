@@ -11,11 +11,13 @@ public class ObstacleMove : MonoBehaviour
     public int points;
     GameObject player, gameManager;
     Gamemanager GM;
+    AudioManager audioManager;
     EnemySpawn enemySpawn;
     public bool isSpaceCraft;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         gameManager = GameObject.FindWithTag("GameManager");
         GM = gameManager.GetComponent<Gamemanager>();
         rb = GetComponent<Rigidbody>();
@@ -62,6 +64,7 @@ public class ObstacleMove : MonoBehaviour
             }
             else
             {
+                audioManager.PlaySFX(1);
                 enemySpawn.shipamount--;
             }
         }

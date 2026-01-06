@@ -45,7 +45,7 @@ public class Player_Controls : MonoBehaviour
         {
             Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + distance), new Quaternion(90, 0, 0, 100));
             doOnce = true;
-            audioManager.PlaySFX(1);
+            audioManager.PlaySFX(0);
         }
     }
 

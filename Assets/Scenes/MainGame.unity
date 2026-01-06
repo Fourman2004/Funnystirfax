@@ -602,6 +602,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7557984515690187850, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
+      propertyPath: SFX.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -7557984515690187850, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
+      propertyPath: 'SFX.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: b64a30802c683bb4cba08ba7213fe6fa, type: 3}
+    - target: {fileID: -7557984515690187850, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
+      propertyPath: 'SFX.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e8721700a25e3b44f9f035284ea386f4, type: 3}
+    - target: {fileID: -7557984515690187850, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
+      propertyPath: 'SFX.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a6be321fead4faa46942cd4ff753edf1, type: 3}
+    - target: {fileID: -7557984515690187850, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
+      propertyPath: 'SFX.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 8bb303a13da1be144bbbc7ad15c5fe7f, type: 3}
+    - target: {fileID: -7557984515690187850, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
+      propertyPath: 'SFX.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 25180268759d23748a75cf7e9c1e8807, type: 3}
+    - target: {fileID: -7557984515690187850, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
+      propertyPath: 'SFX.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f59d95af35268ea4c8adab16cdee9c70, type: 3}
+    - target: {fileID: -7557984515690187850, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
+      propertyPath: 'SFX.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f2690712214baf48a8311f60ca4238c, type: 3}
     - target: {fileID: -2072212315289423486, guid: d6403a3641a7a2840bd3d2fe12a4bd98, type: 3}
       propertyPath: m_Resource
       value: 

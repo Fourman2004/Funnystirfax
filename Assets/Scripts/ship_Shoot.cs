@@ -34,7 +34,7 @@ public class ship_Shoot : MonoBehaviour
         {
             yield return new WaitForSeconds(UnityEngine.Random.Range(1,timer));
             Instantiate(projectile, new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + -10), new Quaternion(90, 0, 0, 100));
-            audioManager.PlaySFX(1);
+            audioManager.PlaySFX(UnityEngine.Random.Range(3,6));
         }
 
     }
